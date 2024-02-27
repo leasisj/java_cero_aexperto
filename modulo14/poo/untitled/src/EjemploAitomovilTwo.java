@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class EjemploAitomovil {
+public class EjemploAitomovilTwo {
     public static void main(String[] args) {
 
         //Automivil automivil = new Automivil("chebrolet","Aveo","Naranja", 2.2,20 );
