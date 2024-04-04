@@ -10,6 +10,7 @@ public class AutomivilTwo {
     private Estanque estanque;
     private Persona conductor;
     private Rueda[] ruedas;
+    private int indiceRuedas = 0;
 
     private static int capacidadTanquestatic = 30;
     //private static String colorPatente = "Naranja"; // le pertenece a la clase y no al objeto (instancia)
@@ -31,6 +32,7 @@ public class AutomivilTwo {
 
     public AutomivilTwo() {
         this.id = ++ultimoId;
+        this.ruedas = new Rueda[5];
     }
 
     public AutomivilTwo(String fabricante, String modelo) {
@@ -125,6 +127,9 @@ public class AutomivilTwo {
     }
 
     public Estanque getEstanque() {
+        if (estanque == null) {
+            this.estanque = new Estanque();
+        }
         return estanque;
     }
 
@@ -148,14 +153,39 @@ public class AutomivilTwo {
         this.ruedas = ruedas;
     }
 
+    public void addReda(Rueda rueda){
+        this.ruedas[indiceRuedas++] = rueda;
+    }
+
     public String verDetalle() {
-        return "automovil.id= " + this.id +
+        String detalle = "automovil.id= " + this.id +
                 "\nautomivil.fabricante = " + this.fabricante +
-                "\nautomivil.modelo = " + this.modelo +
-                "\nautomovil.modelo = " + this.getTipo().getNombre() +
-                "\nautomivil.color = " + this.color +
-                "\nautautomivil.colorPatente " + AutomivilTwo.colorPatente +
-                "\nautomivil.cilindrada = " + this.motor.getCilindrada();
+                "\nautomivil.modelo = " + this.modelo;
+        if (this.getTipo() != null) {//para evitar el NullPointerException
+            detalle += "\nautomovil.tipo = " + this.getTipo().getNombre();
+        }
+        detalle += "\nautomivil.color = " + this.color +
+                "\nautautomivil.colorPatente " + AutomivilTwo.colorPatente;
+
+        if (this.motor != null) {
+            detalle += "\nautomivil.cilindrada = " + this.motor.getCilindrada();
+        }
+        if (conductor != null) {
+            detalle += "\nMombre del conductor = " + this.getConductor();
+        }
+
+        if (getRuedas() != null) {
+            detalle += "\nRuedas del automovil:";
+            /*for (Rueda r : this.getRuedas()) {
+                detalle += "\n" + r.getFabricante() + " , aro: " + r.getAro() + ", ancho: " + r.getAncho();
+            }*/
+
+            for (int i = 0; i< ruedas.length; i++){
+                detalle += "\n" +ruedas[i].getFabricante()+ ", Aro:" + ruedas[i].getAro()+ ", Ancho: "+ ruedas[i].getAncho();
+            }
+        }
+
+        return detalle;
     }
 
     public String acelerando(int rpm) {
@@ -174,12 +204,12 @@ public class AutomivilTwo {
 
 
     public float calcularConsumo(int km, float porcentajeDeGasolina) {
-        return km / (estanque.getCapacidad() * porcentajeDeGasolina);
+        return km / (this.getEstanque().getCapacidad() * porcentajeDeGasolina);
     }
 
     //SOBRECARGA DE METODOS
     public float calcularConsumo(int km, int porcentajeDeGasolina) {
-        return km / (estanque.getCapacidad() * (porcentajeDeGasolina) / 100f);
+        return km / (this.getEstanque().getCapacidad() * (porcentajeDeGasolina) / 100f);
     }
 
     public static float calcularConsumoEstatico(int km, int porcentajeDeGasolina) {
