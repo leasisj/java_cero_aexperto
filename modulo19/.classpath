@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="poo_clases_abstractas/src"/>
+	<classpathentry kind="src" path="poo_interfaces_repositorio/src"/>
+	<classpathentry kind="output" path="poo_clases_abstractas/out/production/poo_clases_abstractas"/>
+</classpath>
