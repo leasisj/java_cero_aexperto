@@ -1,11 +1,9 @@
 package org.ijimenez.poointerfaces.reposito;
 
-import org.ijimenez.poointerfaces.Model.Cliente;
-
 import java.util.List;
 
-public interface OrdenableRepositorio {
+public interface OrdenableRepositorio<T> {
 
-    List<Cliente> listar(String campo, Direccion direccion);
+    List<T> listar(String campo, Direccion direccion);
 
 }

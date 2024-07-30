@@ -1,10 +1,8 @@
 package org.ijimenez.poointerfaces.reposito;
 
-import org.ijimenez.poointerfaces.Model.Cliente;
-
 import java.util.List;
 
-public interface PaginableRepositorio {
-    List<Cliente> listar (int desde, int hasta);
+public interface PaginableRepositorio<T> {
+    List<T> listar (int desde, int hasta);
 
 }

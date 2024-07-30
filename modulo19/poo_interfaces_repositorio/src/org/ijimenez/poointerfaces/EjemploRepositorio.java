@@ -2,15 +2,15 @@ package org.ijimenez.poointerfaces;
 
 import org.ijimenez.poointerfaces.Model.Cliente;
 import org.ijimenez.poointerfaces.reposito.*;
+import org.ijimenez.poointerfaces.reposito.lista.ClienteListRepositorio;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
-public class EjemploRepositorio {
+public abstract class EjemploRepositorio {
     public static void main(String[] args) {
 
         //agregando clientes a la lista
-        CrudRepositorio repositorio = new ClienteListRepositorio();
+        CrudRepositorio<Cliente> repositorio = new ClienteListRepositorio();
         repositorio.crearCliente(new Cliente("Isa", "Jimenez"));
         repositorio.crearCliente(new Cliente("Ruby", "Gonzales"));
         repositorio.crearCliente(new Cliente("Ale", "Guzman"));

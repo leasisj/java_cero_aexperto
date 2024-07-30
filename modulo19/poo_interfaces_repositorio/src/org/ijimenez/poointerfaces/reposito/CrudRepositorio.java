@@ -1,15 +1,11 @@
 package org.ijimenez.poointerfaces.reposito;
 
-
-import org.ijimenez.poointerfaces.Model.Cliente;
-
 import java.util.List;
 
-public interface CrudRepositorio {
-    List<Cliente> listar();
-    Cliente obtenerPorId(Integer id);
-    void crearCliente(Cliente cliente);
-    void editarCliente(Cliente cliente);
+public interface CrudRepositorio<T> {
+    List<T> listar();
+    T obtenerPorId(Integer id);
+    void crearCliente(T t);
+    void editarCliente(T t);
     void eliminar(Integer id);
-
 }
